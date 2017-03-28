@@ -1,0 +1,38 @@
+@import '../../styles/vars.less';
+
+.wrapper {
+  width: 400px;
+  height: 100vh;
+  padding-left: 20px;
+  padding-top: 30px;
+  position: fixed;
+  background-color: #ffffff;
+}
+
+.nav {
+
+}
+
+
+.link {
+  display: block;
+  font-family: @font-base;
+  font-weight: 700;
+  color: @color-grey;
+  line-height: 20px;
+  font-size: 16px;
+  padding: 15px 10px;
+  border-bottom: 1px solid fade(@color-grey, 15%);
+}
+
+.activeLink {
+  color: red;
+}
+
+.logo {
+  width: 100%;
+  background: transparent url("./../../theme/@{theme}/logo.png") no-repeat 50% 50%;
+  background-size: 78px 81px;
+  height: 100px;
+  margin-bottom: 10px;
+}

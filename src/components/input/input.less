@@ -1,0 +1,94 @@
+@import '../../styles/reset.less';
+@import '../../styles/vars.less';
+
+.wrapper {
+  position: relative;
+
+  .error {
+    position: absolute;
+    top: -20px;
+    right:0;
+  }
+}
+
+.default {
+  box-sizing: border-box;
+  padding: 15px 17px;
+  width: 100%;
+  outline: none;
+  color: @color-grey-dark;
+  border: 1px solid @color-grey;
+  border-radius: 2px;
+  font-size: 24px;
+  font-weight: 900;
+  font-family: @font-base;
+  line-height: 24px;
+  -webkit-appearance: none;
+
+  &:focus {
+    border-color: @color-blue-pastel;
+    box-shadow: inset 0px 1px 3px 0px @color-blue;
+  }
+
+  &[disabled] {
+    background-color: @color-grey;
+
+    &:focus {
+      border-color: @color-grey;
+      box-shadow: none;
+    }
+  }
+}
+
+.simple {
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  border: none;
+  letter-spacing: -0.4px;
+  font-size: 16px;
+  font-family: @font-base;
+  line-height: 17px;
+  -webkit-appearance: none;
+  padding: 0px;
+
+  @mixin placeholder {
+    color: @color-grey-light;
+  }
+}
+
+.hero {
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  border: none;
+  letter-spacing: -0.4px;
+  font-size: 28px;
+  font-family: @font-base;
+  line-height: 36px;
+  -webkit-appearance: none;
+  padding: 8px 10px;
+  border: solid 1px transparent;
+  border-radius: 4px;
+
+  &:hover {
+    border-color: @color-grey;
+  }
+
+  &:focus {
+    border-color: @color-blue-pastel;
+    box-shadow: inset 0px 1px 3px 0px @color-blue;
+  }
+
+  @mixin placeholder {
+    color: @color-grey-light;
+  }
+}
+
+.error {
+  color: @color-red-dark;
+  font-size: 12px;
+  font-family:@font-base;
+  font-weight: 700;
+  line-height: 18px;
+}
