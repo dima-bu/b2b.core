@@ -10,6 +10,30 @@ export default class API {
     this.path = '';
     this.defaultAPIConfig = {};
   }
+  
+  static getGroups (login, password) {
+    this.contractorId = 1000006867451;
+    const creds = {accessKeyId: login, secretAccessKey: password};
+
+    this.defaultAPIConfig = {
+      region: 'global',
+      endpoint: 'https://dev.hivelogin.ru',
+      credentials: creds
+    };
+
+    this.API = new ContractorAPI(this.defaultAPIConfig);
+
+    try {
+      this.API.getGroups({contractor: this.contractorId}, (data)=>{
+          debugger;
+          const foo = data;
+      })
+    } catch (e) {
+     
+    }
+    
+    return this.API.getGroups({contractor: this.contractorId}).promise();
+  }
 
   static autorization (login, password) {
     const creds = {accessKeyId: login, secretAccessKey: password};

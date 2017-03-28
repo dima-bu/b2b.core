@@ -34,7 +34,7 @@ export const LogIn = (credentials) => {
       dispatch({type: LOGGED_IN});
       dispatch(setLoginName(loginName));
       dispatch(setPassword(passwordHASH));
-      browserHistory.push('counter');
+      browserHistory.push('stuff');
     },
     error => {
       dispatch({type: LOGIN_FAILED});

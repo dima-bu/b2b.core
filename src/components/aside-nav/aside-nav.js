@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {IndexLink, Link} from 'react-router';
 import pure from './../../decorators/pure';
 import style from './aside-nav.less';
+import cx from 'classnames';
 
 export default class AsideNav extends Component {
   static propTypes = {
@@ -11,13 +12,37 @@ export default class AsideNav extends Component {
         title: React.PropTypes.string.isRequired
       })
     ),
-    handleClick: PropTypes.func
-  }
+    isOpen: PropTypes.bool,
+    handleClick: PropTypes.func,
+    onOpenMenu: PropTypes.func,
+    onCloseMenu: PropTypes.func
+  };
+
+  static defaultProps = {
+    items: [],
+    isOpen: true,
+    onOpenMenu: ()=>{},
+    onCloseMenu: ()=>{}
+  };
 
   render () {
-    const {handleClick, items} = this.props;
+    const {handleClick, items, isOpen, onOpenMenu, onCloseMenu} = this.props;
+
+    const toggleMenu = () => {
+      if (isOpen){
+        onCloseMenu()
+      } else {
+        onOpenMenu()
+      }
+    };
+
     return (
-      <div className={style.wrapper}>
+      <div className={cx(style.wrapper, isOpen ? style.open : '')}>
+        <div className={style.hamburger} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div className={style.logo}></div>
         <nav className={style.nav}>
           <IndexLink className={style.link} to='/' activeClassName={style.activeLink}>

@@ -3,7 +3,6 @@ import locationReducer from './location';
 import {reducer as form} from 'redux-form';
 
 export const makeRootReducer = (asyncReducers) => {
-  console.log('sdfsdfsdf');
   return combineReducers({
     form: form,
     location: locationReducer,
