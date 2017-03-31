@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './store/createStore';
 import AppContainer from './containers/AppContainer';
-
+import Config from './lib/config';
+import Local from './../config/local.json';
 // ========================================================
 // Store Instantiation
 // ========================================================
@@ -17,10 +18,29 @@ const MOUNT_NODE = document.getElementById('root');
 let render = () => {
   const routes = require('./routes/index').default(store);
 
-  ReactDOM.render(
-    <AppContainer store={store} routes={routes} />,
-    MOUNT_NODE
-  );
+   const LocalConfig = require('./../config/local.json');
+
+  if (LocalConfig) {
+      Config.assign(LocalConfig);
+
+      if(LocalConfig.lang) {
+        const lang = require(`./../src/i18/${LocalConfig.lang}.json`);
+
+        if(lang) {
+
+        }
+      }
+
+      debugger;
+      ReactDOM.render(
+        <AppContainer store={store} routes={routes} />,
+        MOUNT_NODE
+      );
+  }
+
+  // TODO display error message to the user
+  //console.error(error);
+
 };
 
 // This code is excluded from production bundle

@@ -8,8 +8,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  isOpenedAsideNav: state.core.isOpenedAsideNav,
-  loggedIn: state.login.loggedIn
+  isOpenedAsideNav: state.core.isOpenedAsideNav
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoreLayout);

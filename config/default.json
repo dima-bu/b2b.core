@@ -1,0 +1,18 @@
+{
+  "api": {
+    "endpoint": null
+  },
+  "contractor": {
+    "name": "",
+    "id": null
+  },
+  "theme": "default",
+  "contactorAlias": null,
+  "lang": "ru",
+  "osm": {
+    "tiles": {
+      "url": "/tile/{z}/{x}/{y}.png",
+      "attribution": "&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+    }
+  }
+}

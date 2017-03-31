@@ -1,50 +1,43 @@
 //import moment from 'moment';
 //import CryptoJS from 'crypto-js';
 import ContractorAPI from 'hivetaxi-sdk/clients/contractor';
+import Config from './config';
 
 export default class API {
 
   constructor () {
     this.login = '';
     this.passwordHASH = '';
-    this.path = '';
     this.defaultAPIConfig = {};
   }
-  
-  static getGroups (login, password) {
-    this.contractorId = 1000006867451;
-    const creds = {accessKeyId: login, secretAccessKey: password};
 
+  static getGroups () {
+
+    const creds = {accessKeyId: 'admin', secretAccessKey: 'admin'};
+    
     this.defaultAPIConfig = {
       region: 'global',
-      endpoint: 'https://dev.hivelogin.ru',
+      endpoint: Config.get('api').endpoint,
       credentials: creds
     };
 
-    this.API = new ContractorAPI(this.defaultAPIConfig);
+    this.contractorId = Config.get('contactorAlias');
 
-    try {
-      this.API.getGroups({contractor: this.contractorId}, (data)=>{
-          debugger;
-          const foo = data;
-      })
-    } catch (e) {
-     
-    }
-    
+    this.API = new ContractorAPI(this.defaultAPIConfig);
     return this.API.getGroups({contractor: this.contractorId}).promise();
   }
 
   static autorization (login, password) {
+
     const creds = {accessKeyId: login, secretAccessKey: password};
 
     this.defaultAPIConfig = {
       region: 'global',
-      endpoint: 'https://dev.hivelogin.ru',
+      endpoint: Config.get('api').endpoint,
       credentials: creds
     };
 
-    this.contractorId = 1000006867451;
+    this.contractorId = Config.get('contactorAlias');
 
     this.API = new ContractorAPI(this.defaultAPIConfig);
 

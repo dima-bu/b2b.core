@@ -16,17 +16,17 @@ export const FAIL_LOAD_GROUPS = 'FAIL_LOAD_GROUPS';
 export const loadGroups = () => {
   return (dispatch, getState) => {
 
-    const loginName = getState().login.loginName;
-    const passwordHASH = getState().login.passwordHASH;
-
-    debugger;
+    // const loginName = getState().login.loginName;
+    // const passwordHASH = getState().login.passwordHASH;
+    const loginName = 'admin';
+    const passwordHASH =  'admin';
 
     dispatch({type: WAITING_GROUPS});
-    return API.getGroups(loginName, passwordHASH).then(resp => {
+    return API.getGroups(loginName, passwordHASH).then(data => {
         dispatch({type: LOAD_GROUPS});
-        dispatch(setGroups(resp));
+        dispatch(setGroups(data));
       },
-      error => {
+      () => {
         dispatch(setFailLoadGroups('Ошибка загрузки'));
       }
     );

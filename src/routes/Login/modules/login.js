@@ -1,4 +1,4 @@
-import API, {api, getBASE64SHA256} from '../../../lib/api';
+import API from '../../../lib/api';
 import {browserHistory} from 'react-router';
 // ------------------------------------
 // Constants
@@ -30,17 +30,17 @@ export const LogIn = (credentials) => {
   return (dispatch, getState) => {
     const loginName = credentials.name;
     const passwordHASH = credentials.password;
-    return API.autorization(loginName, passwordHASH).then(resp => {
+    return API.autorization(loginName, passwordHASH).then(data => {
       dispatch({type: LOGGED_IN});
       dispatch(setLoginName(loginName));
       dispatch(setPassword(passwordHASH));
       browserHistory.push('stuff');
     },
-    error => {
-      dispatch({type: LOGIN_FAILED});
-      console.log(error);
-    }
-     );
+      error => {
+        dispatch({type: LOGIN_FAILED});
+        console.log(error);
+      }
+    );
   };
 };
 

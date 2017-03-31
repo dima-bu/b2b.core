@@ -58,8 +58,21 @@ const config = {
   coverage_reporters : [
     {type : 'text-summary'},
     {type : 'lcov', dir : 'coverage'}
-  ]
+  ],
+
+  //
+
+  main_conf: {
+
+  }
 };
+
+config.main_conf = require('./default.json');
+
+if(require('./local.json').api) {
+  config.main_conf = require('./local.json');
+}
+
 
 /************************************************
 -------------------------------------------------

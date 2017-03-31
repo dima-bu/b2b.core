@@ -151,7 +151,7 @@ webpackConfig.module.loaders.push({
   loaders: [
     'style',
     MODULE_CSS_LOADER,
-    'less-loader?{"modifyVars":{"theme":"default"}}'
+    'less-loader?{"modifyVars":{"theme":"'+project.main_conf.theme+'"}}'
   ]
 })
 

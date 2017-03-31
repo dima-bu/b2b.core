@@ -18,12 +18,10 @@ const items = [
   }
 ];
 
-export const CoreLayout = ({children, isOpenedAsideNav, openAsideNav, closeAsideNav, loggedIn}) => (
+export const CoreLayout = ({children, isOpenedAsideNav, openAsideNav, closeAsideNav}) => (
 
   <div className={styles.coreWrapper}>
-    {loggedIn &&
-      <AsideNav items={items} isOpen={isOpenedAsideNav} onOpenMenu={openAsideNav} onCloseMenu={closeAsideNav}/>
-    }
+    <AsideNav items={items} isOpen={isOpenedAsideNav} onOpenMenu={openAsideNav} onCloseMenu={closeAsideNav}/>
     <div className={styles.container}>
       {children}
     </div>
