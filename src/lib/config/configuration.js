@@ -165,7 +165,6 @@ export function include(url, authorization) {
             new URL(url, setOptions.basePath).href,
             authorization,
             (json) => {
-                debugger;
                 set(json);
                 resolve(json);
             },

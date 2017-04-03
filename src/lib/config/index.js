@@ -43,7 +43,6 @@ else {
     baseURI = '';
 }
 
-debugger;
 // Initialize default configuration
 options({basePath: new URL('config/', baseURI).href});
 //options({basePath: new URL('config/', 'http://localhost:3000/stuff/').href});

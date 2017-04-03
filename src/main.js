@@ -4,6 +4,9 @@ import createStore from './store/createStore';
 import AppContainer from './containers/AppContainer';
 import Config from './lib/config';
 import Local from './../config/local.json';
+import {injectReducer} from '../src/store/reducers';
+import {setLang} from './lib/lang/modules/lang.js';
+
 // ========================================================
 // Store Instantiation
 // ========================================================
@@ -22,17 +25,22 @@ let render = () => {
 
   if (LocalConfig) {
       Config.assign(LocalConfig);
+      let lang;
 
-      if(LocalConfig.lang) {
-        const lang = require(`./../src/i18/${LocalConfig.lang}.json`);
+      if (LocalConfig.lang) {
+        lang = require(`./../src/i18/${LocalConfig.lang}.json`);
+      }
+    
+      const reducer = require('./lib/lang/modules/lang').default;
+      injectReducer(store, { key: 'lang', reducer});
 
-        if(lang) {
+      const routes = require('./routes/index').default(store);
 
-        }
+      if (lang) {
+         store.dispatch(setLang(lang));
       }
 
-      debugger;
-      ReactDOM.render(
+    ReactDOM.render(
         <AppContainer store={store} routes={routes} />,
         MOUNT_NODE
       );
