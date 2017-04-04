@@ -45,11 +45,12 @@ export default class AsideNav extends Component {
         </div>
         <div className={style.logo}></div>
         <nav className={style.nav}>
-          <IndexLink className={style.link} to='/' activeClassName={style.activeLink}>
+          <IndexLink onClick={toggleMenu} className={style.link} to='/' activeClassName={style.activeLink}>
             Home
           </IndexLink>
           {items.map(({pathname, title}, key) =>
             <Link
+              onClick={toggleMenu}
               className={style.link}
               activeClassName={style.activeLink}
               key={key}

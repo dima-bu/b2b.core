@@ -1,0 +1,23 @@
+@import '../../styles/vars.less';
+//@import '../../styles/reset.less';
+@import '../../styles/mixins.less';
+
+.wrapper {
+  height: 50px;
+  padding: 0 10px;
+  .ta-m();
+  .double-border();
+  cursor: pointer;
+  font-family: @font-base;
+  color: @color-text;
+
+  &.active, &:hover {
+    background-color: fade(@color-blue, 15%);
+  }
+
+  &.md-size {
+    font-weight: 700;
+    font-size: 20px;
+    height: 50px;
+  }
+}

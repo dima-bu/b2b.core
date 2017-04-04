@@ -11,22 +11,6 @@ export default class API {
     this.defaultAPIConfig = {};
   }
 
-  static getGroups () {
-
-    const creds = {accessKeyId: 'admin', secretAccessKey: 'admin'};
-    
-    this.defaultAPIConfig = {
-      region: 'global',
-      endpoint: Config.get('api').endpoint,
-      credentials: creds
-    };
-
-    this.contractorId = Config.get('contactorAlias');
-
-    this.API = new ContractorAPI(this.defaultAPIConfig);
-    return this.API.getGroups({contractor: this.contractorId}).promise();
-  }
-
   static autorization (login, password) {
 
     const creds = {accessKeyId: login, secretAccessKey: password};
@@ -67,6 +51,26 @@ export default class API {
     //     version: '1.0'
     //   }
     // });
+  }
+
+  static getGroups () {
+
+    const creds = {accessKeyId: 'admin', secretAccessKey: 'admin'};
+
+    this.defaultAPIConfig = {
+      region: 'global',
+      endpoint: Config.get('api').endpoint,
+      credentials: creds
+    };
+    this.contractorId = 1000006867451;
+   // this.contractorId = Config.get('contactorAlias');
+
+    this.API = new ContractorAPI(this.defaultAPIConfig);
+    return this.API.getGroups({contractor: this.contractorId}).promise();
+  }
+
+  static GetEmployees (groupId) {
+    return this.API.getEmployees({groupId: groupId, contractor: this.contractorId}).promise();
   }
 
   // static getNonce () {

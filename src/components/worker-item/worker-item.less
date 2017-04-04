@@ -1,0 +1,34 @@
+@import '../../styles/vars.less';
+//@import '../../styles/reset.less';
+@import '../../styles/mixins.less';
+
+.wrapper {
+  height: 50px;
+  padding: 0 10px;
+  .ta-m();
+  cursor: pointer;
+  justify-content: space-between;
+  font-family: @font-base;
+  font-weight: 700;
+  font-size: 16px;
+  color: @color-text;
+  .double-border();
+
+  &.active, &:hover {
+    background-color: fade(@color-blue, 15%);
+  }
+
+  &.isLock {
+    .name {
+      color: @color-grey-light;
+    }
+  }
+
+
+}
+
+.value {
+  color: @color-emerald;
+}
+
+

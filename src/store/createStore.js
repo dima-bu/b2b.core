@@ -4,38 +4,8 @@ import {logger} from 'redux-logger';
 import {browserHistory} from 'react-router';
 import makeRootReducer from './reducers';
 import {updateLocation} from './location';
-
-const translationsObject = {
-  en: {
-    application: {
-      "LOGIN_ENTER": "Вход в кабинет контрагента",
-      "STATUS_CAR_ASSIGNED": "Машина назначена",
-      "STATUS_CAR_ARRIVED": "Машина ожидает",
-      "STATUS_IN_PROGRESS": "Заказ выполняется",
-      "STATUS_RESERVED": "ЗАКАЗ ЗАРЕЗЕРВИРОВАН"
-    },
-    date: {
-      long: 'MMMM Do, YYYY'
-    },
-    export: 'Export %{count} items',
-    export_0: 'Nothing to export',
-    export_1: 'Export %{count} item',
-    two_lines: 'Line 1<br />Line 2'
-  },
-  nl: {
-    application: {
-      title: 'Toffe app met i18n!',
-      hello: 'Hallo, %{name}!'
-    },
-    date: {
-      long: 'D MMMM YYYY'
-    },
-    export: 'Exporteer %{count} dingen',
-    export_0: 'Niks te exporteren',
-    export_1: 'Exporteer %{count} ding',
-    two_lines: 'Regel 1<br />Regel 2'
-  }
-};
+import {loadTranslations, setLocale, syncTranslationWithStore} from 'react-redux-i18n';
+import {initTranslationsObject} from 'lib/locale';
 
 export default (initialState = {}) => {
   // ======================================================
@@ -74,7 +44,17 @@ export default (initialState = {}) => {
 
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
   store.unsubscribeHistory = browserHistory.listen(updateLocation(store));
+  syncTranslationWithStore(store);
 
+  initTranslationsObject().then((langArray)=>{
+    const translationsObject = {};
+    langArray.forEach(langObj => {
+      translationsObject[langObj.lang] = langObj.vocabulary
+    });
+
+    store.dispatch(loadTranslations(translationsObject));
+    store.dispatch(setLocale('en'));
+  });
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
