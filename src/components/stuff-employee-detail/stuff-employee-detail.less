@@ -1,0 +1,47 @@
+@import '../../styles/vars.less';
+@import '../../styles/mixins.less';
+
+.title {
+  font-family: @font-base;
+  font-size: 18px;
+  color: fade(@color-grey, 85%);
+  font-weight: 700;
+}
+
+.header {
+  height: 50px;
+  .ta-m();
+  .double-border(fade(@color-green-dark, 35%), #ffffff);
+}
+
+.content {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  .double-border(fade(@color-grey, 35%), #ffffff);
+}
+
+.fullName {
+  font-family: @font-base;
+  font-size: 20px;
+  font-weight: 700;
+  color: @color-text;
+}
+
+.phones {
+  padding-top: 15px;
+}
+
+.phoneTtile {
+  font-family: @font-base;
+  font-size: 16px;
+  color: fade(@color-grey, 85%);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.phone {
+  font-family: @font-base;
+  font-size: 20px;
+  font-weight: 700;
+  color: @color-text;
+}

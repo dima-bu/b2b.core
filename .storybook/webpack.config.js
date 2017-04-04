@@ -9,5 +9,9 @@ const __TEST__ = project.globals.__TEST__;
 
 module.exports = storybookBaseConfig => {
   storybookBaseConfig.module.loaders = mainWebpackConfig.module.loaders;
+  storybookBaseConfig.resolve = {
+    root       : project.paths.client(),
+    extensions : ['', '.js', '.jsx', '.json']
+  };
   return storybookBaseConfig;
 };

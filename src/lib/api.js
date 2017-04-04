@@ -73,6 +73,10 @@ export default class API {
     return this.API.getEmployees({groupId: groupId, contractor: this.contractorId}).promise();
   }
 
+  static GetEmployee (employeeId, groupId) {
+    return this.API.getEmployee({groupId: groupId, employeeId: employeeId, contractor: this.contractorId}).promise();
+  }
+
   // static getNonce () {
   //   return Math.round(Math.random() * 10000000);
   // }

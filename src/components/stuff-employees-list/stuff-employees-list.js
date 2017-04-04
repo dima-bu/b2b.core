@@ -9,6 +9,7 @@ export default class StuffEmployeesList extends Component {
         lastName: PropTypes.string,
         firstName: PropTypes.string,
         middleName: PropTypes.string,
+        locked: PropTypes.bool,
         employeeId: PropTypes.number.isRequired
       })
     ),

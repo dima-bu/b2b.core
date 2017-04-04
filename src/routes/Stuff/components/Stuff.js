@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import fl from 'styles/fluidable.less';
 import StuffGroupsList from 'components/stuff-groups-list/stuff-groups-list.js';
 import StuffEmployeesList from 'components/stuff-employees-list/stuff-employees-list.js';
+import StuffEmployeeDetail from 'components/stuff-employee-detail/stuff-employee-detail';
 import style from './Stuff.less';
-
-
 import {tr} from 'lib/locale.js';
 
 export default class Stuff extends Component {
@@ -15,10 +14,13 @@ export default class Stuff extends Component {
 
   render() {
 
-    const {selectGroup, groups, activeGroupId, employees} = this.props;
-
+    const {selectGroup, selectEmployee, groups, activeGroupId, employees, activeEmployeeId} = this.props;
+    const {lastName, firstName, middleName, employeeId, phones} = this.props.employee;
     const onSelectGroup = (id) => {
       selectGroup(id)
+    };
+    const onSelectEmployee = (id) => {
+      selectEmployee(id)
     };
 
     return (
@@ -38,8 +40,20 @@ export default class Stuff extends Component {
             </div>
             <div className={fl['col-6']}>
               <StuffEmployeesList
+                onClickHandler={onSelectEmployee}
                 title={tr('STUFF_GROUP_MEMBERS')}
                 items={employees}
+                activeEmployeeId={activeEmployeeId}
+              />
+            </div>
+            <div className={fl['col-3']}>
+              <StuffEmployeeDetail
+                title={tr('STUFF_GROUP_INFO')}
+                firstName={firstName}
+                lastName={lastName}
+                middleName={middleName}
+                employeeId={employeeId}
+                phones={phones}
               />
             </div>
           </div>

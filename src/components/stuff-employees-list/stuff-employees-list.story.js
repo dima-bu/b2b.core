@@ -17,7 +17,7 @@ const items = [
     "lastName": "Гинцяк",
     "firstName": "Юрий",
     "middleName": "Михайлович",
-    "locked": false
+    "locked": true
   }, {
     "groupId": 1000007736672,
     "employeeId": 1000007739618,

@@ -1,5 +1,4 @@
 @import '../../styles/vars.less';
-//@import '../../styles/reset.less';
 @import '../../styles/mixins.less';
 
 .wrapper {
@@ -21,14 +20,15 @@
   &.isLock {
     .name {
       color: @color-grey-light;
+      margin-left: 10px;
     }
   }
+}
 
-
+.nameWrapper {
+  .ta-m();
 }
 
 .value {
   color: @color-emerald;
 }
-
-

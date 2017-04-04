@@ -7,6 +7,12 @@ const capitalizeFirstLetter = (string) => {
 
 const createElem = (name) => {
 
+  const CapsNameArr = name.split('-').map(item => {
+     return capitalizeFirstLetter(item)
+  });
+
+  const CapsName = CapsNameArr.join('');
+
   fs.copySync('src/components/clear', 'src/components/'+name);
   fs.moveSync('src/components/'+name+'/clear.js', 'src/components/'+name+'/'+name+'.js');
   fs.moveSync('src/components/'+name+'/clear.story.js', 'src/components/'+name+'/'+name+'.story.js');
@@ -22,7 +28,7 @@ const createElem = (name) => {
   });
   replace({
     regex: "Clear",
-    replacement: capitalizeFirstLetter(name),
+    replacement: CapsName,
     paths: ['src/components/'+name+'/'+name+'.js', 'src/components/'+name+'/'+name+'.story.js'],
     recursive: true,
     silent: true
