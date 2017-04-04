@@ -10,6 +10,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   isLoadingGroups: state.stuff.isLoadingGroups,
   groups: state.stuff.groups,
+  employees: state.stuff.employees,
   loadError: state.stuff.loadError,
   activeGroupId: state.stuff.activeGroupId
 });

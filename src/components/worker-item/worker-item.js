@@ -8,14 +8,14 @@ export default class WorkerItem extends Component {
     isLock: PropTypes.bool,
     active: PropTypes.bool,
     value: PropTypes.number,
-    id: PropTypes.string,
+    id: PropTypes.number,
     onClickHandler: PropTypes.func
   };
 
   static defaultProps = {
     name: '',
     isLock: false,
-    value: 0,
+    value: null,
     active: false,
     onClickHandler: () => {}
   };

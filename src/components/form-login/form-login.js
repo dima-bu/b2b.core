@@ -1,9 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import Input from './../input/input';
-import Button from './../button/button';
+import Input from 'components/input/input';
+import Button from 'components/button/button';
 import {Field, reduxForm} from 'redux-form';
 import pure from './../../decorators/pure';
-
 import style from './form-login.less';
 
 @pure

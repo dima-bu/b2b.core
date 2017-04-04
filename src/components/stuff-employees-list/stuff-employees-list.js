@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import WorkerItem from './../worker-item/worker-item';
+import WorkerItem from 'components/worker-item/worker-item';
 import style from './stuff-employees-list.less';
 
 export default class StuffEmployeesList extends Component {

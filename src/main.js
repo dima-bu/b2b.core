@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createStore from './store/createStore';
-import AppContainer from './containers/AppContainer';
-import Config from './lib/config';
+import AppContainer from 'containers/AppContainer';
+import Config from 'lib/config';
 
 // ========================================================
 // Store Instantiation

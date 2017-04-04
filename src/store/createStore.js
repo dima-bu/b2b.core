@@ -53,7 +53,7 @@ export default (initialState = {}) => {
     });
 
     store.dispatch(loadTranslations(translationsObject));
-    store.dispatch(setLocale('en'));
+    store.dispatch(setLocale('ru'));
   });
 
   if (module.hot) {
