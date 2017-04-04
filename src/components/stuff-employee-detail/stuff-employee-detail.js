@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import cx from 'classnames';
 import style from './stuff-employee-detail.less';
+import SwitchButton from 'components/switch-button/switch-button.js';
 
 export default class StuffEmployeeDetail extends Component {
   static propTypes = {
@@ -10,7 +11,9 @@ export default class StuffEmployeeDetail extends Component {
     middleName: PropTypes.string,
     locked: PropTypes.bool,
     employeeId: PropTypes.number,
-    phones: PropTypes.array
+    phones: PropTypes.array,
+    onLockEmployee: PropTypes.func,
+    onUnLockEmployee: PropTypes.func
   };
 
   static defaultProps = {
@@ -19,11 +22,22 @@ export default class StuffEmployeeDetail extends Component {
     lastName: '',
     firstName: '',
     middleName: '',
-    phones: []
+    phones: [],
+    onLockEmployee: ()=>{},
+    onUnLockEmployee: ()=>{}
   };
 
   render () {
-    const {title, lastName, firstName, middleName, phones} = this.props;
+    const {title, lastName, firstName, middleName, phones, locked, onLockEmployee, onUnLockEmployee, employeeId} = this.props;
+
+    const toggleLock = () => {
+      if(locked) {
+        onUnLockEmployee()
+      } else {
+        onLockEmployee()
+      }
+    };
+
     return (
       <div className={style.wraper}>
         <header className={style.header}>
@@ -33,11 +47,12 @@ export default class StuffEmployeeDetail extends Component {
           <div className={style.fullName}>
             {lastName} <br/> {firstName} {middleName}
           </div>
+          <SwitchButton  name={'switch-'+employeeId} onChange={toggleLock} checked={locked} defaultChecked={locked}/>
         </div>
         <div className={style.phones}>
           <h3 className={style.phoneTtile}>Телефоны</h3>
           {phones.map((phone, key) => {
-            <div key={key} className={style.phones}>{phone}</div>
+            return  <div key={key} className={style.phone}>{phone}</div>
             })
           }
         </div>

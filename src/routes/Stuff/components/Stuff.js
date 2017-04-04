@@ -15,7 +15,7 @@ export default class Stuff extends Component {
   render() {
 
     const {selectGroup, selectEmployee, groups, activeGroupId, employees, activeEmployeeId} = this.props;
-    const {lastName, firstName, middleName, employeeId, phones} = this.props.employee;
+    const {lastName, firstName, middleName, employeeId, phones, locked} = this.props.employee;
     const onSelectGroup = (id) => {
       selectGroup(id)
     };
@@ -54,6 +54,7 @@ export default class Stuff extends Component {
                 middleName={middleName}
                 employeeId={employeeId}
                 phones={phones}
+                locked={locked}
               />
             </div>
           </div>

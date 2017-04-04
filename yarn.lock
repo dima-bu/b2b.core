@@ -3266,7 +3266,7 @@ history@^3.0.0:
     warning "^3.0.0"
 
 "hivetaxi-sdk@file:./../hive.taxi.sdk.js":
-  version "1.0.1"
+  version "1.0.2"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
