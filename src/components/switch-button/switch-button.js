@@ -14,7 +14,8 @@ export default class SwitchButton extends Component {
     theme          : PropTypes.string,
     checked        : PropTypes.string,
     mode           : PropTypes.string,
-    onChange       : PropTypes.func
+    onChange       : PropTypes.func,
+    size: PropTypes.oneOf(['sm'])
   }
 
   static defaultProps = {
@@ -25,10 +26,11 @@ export default class SwitchButton extends Component {
     labelRight     : '',
     disabled       : false,
     defaultChecked : false,
-    theme          : 'rsbc-switch-button-flat-round',
+    theme          : 'hive-b2b',
     checked        : null,
     mode           : "switch",
-    onChange       : () => {}
+    onChange       : () => {},
+    size: 'sm'
   }
 
   render () {
@@ -47,7 +49,7 @@ export default class SwitchButton extends Component {
 
     if( this.props.labelRight !== '' ) {
       labelRight = (
-        <label htmlFor={id}>{this.props.labelRight}</label>
+        <label htmlFor={id} className={style.label}>{this.props.labelRight}</label>
       );
     }
 
@@ -56,15 +58,18 @@ export default class SwitchButton extends Component {
     }
 
     return (
-      <div className={cx(style['rsbc-switch-button'], style['rsbc-mode-' + mode], style[this.props.theme], this.props.disabled ? style.disabled : '')}>
+      <div className={cx(style['switch-button'], style['rsbc-mode-' + mode], style[this.props.theme], style[this.props.size], this.props.disabled ? style.disabled : '')}>
         {label}
-        <input onChange={this.props.onChange}
-               checked={this.props.checked}
-               disabled={this.props.disabled}
-               id={id} name={this.props.name}
-               type="checkbox"
-               value="1"/>
-        <label htmlFor={id}>
+        <input
+          onChange={this.props.onChange}
+          checked={this.props.checked}
+          disabled={this.props.disabled}
+          id={id}
+          name={this.props.name}
+          type="checkbox"
+          value="1"
+        />
+        <label htmlFor={id} >
         </label>
         {labelRight}
       </div>

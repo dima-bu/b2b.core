@@ -1,22 +1,24 @@
 @import '../../styles/vars.less';
-/**
- * React Switch Button control style.
- *
- * @author          =undo= <g.fazioli@undolog.com>
- * @date            2016-02-17
- * @version         2.0.0
- *
- */
+@import '../../styles/mixins.less';
 
-// Main Switch Button container
-.rsbc-switch-button
-{
+@transtion-delay : 0.4s;
+@color-on : @color-emerald;
+@color-off : @color-grey-light;
+@color-on-border : darken(@color-on, 10%);
+@color-off-border : darken(@color-off, 10%);
+@color-disabled : #eee;
+@color-disabled-border : darken(@color-disabled, 10%);
+@color-pin : #ffffff;
+
+@transition : 0.3s;
+
+.switch-button {
   position       : relative;
   line-height    : 100%;
   display        : inline-block;
   vertical-align : middle;
   margin         : 0;
-  .rsbc-box-sizing(border-box);
+  .box-sizing(border-box);
 
   label {
     cursor: pointer;
@@ -29,177 +31,140 @@
   }
 
   // Hide the default input checkbox
-  input[type="checkbox"]
-  {
+  input[type="checkbox"] {
     position    : absolute;
     margin-left : -9999px;
     visibility  : hidden;
   }
 
   // Default left label
-  > label:first-child
-  {
+  > label:first-child {
     display    : inline-block;
     margin     : 0 6px 0 0px;
   }
 
   // Right label
-  label + label
-  {
+  label + label {
     margin-left : 6px;
   }
 
-  input[type="checkbox"] + label
-  {
+  input[type="checkbox"] + label {
     display  : inline-block;
     position : relative;
     margin   : 0;
     outline  : none;
-    .rsbc-user-select(none);
-    .rsbc-box-sizing(border-box);
+    .user-select(none);
+    .box-sizing(border-box);
   }
-}
-
-@rsbc-transtion-delay : 0.4s;
-@rsbc-theme-flat-color-on : #579fcb;
-@rsbc-theme-flat-color-on-border : darken(@rsbc-theme-flat-color-on, 10%);
-@rsbc-theme-flat-color-off : #aaa;
-@rsbc-theme-flat-color-off-border : darken(@rsbc-theme-flat-color-off, 10%);
-@rsbc-theme-flat-color-disabled : #eee;
-@rsbc-theme-flat-color-disabled-border : darken(@rsbc-theme-flat-color-disabled, 10%);
-
-// Utilities
-// ---------------------------------------------------------------------------------------------------------------------
-
-// Radius
-.rsbc-border-radius( @radius ) {
-  -webkit-border-radius : @radius;
-  -moz-border-radius    : @radius;
-  border-radius         : @radius;
-}
-
-// Transitions
-.rsbc-transition(  @transition ) {
-  -webkit-transition : @transition;
-  -moz-transition    : @transition;
-  -o-transition      : @transition;
-  transition         : @transition;
-}
-
-// Box sizing
-.rsbc-box-sizing (@type: border-box) {
-  -webkit-box-sizing : @type;
-  -moz-box-sizing    : @type;
-  box-sizing         : @type;
-}
-
-// User select
-.rsbc-user-select (@value) {
-  -webkit-user-select : @value;
-  -moz-user-select    : @value;
-  -ms-user-select     : @value;
-  user-select         : @value;
 }
 
 // Main Switch Button container
-.rsbc-switch-button
-{
+.switch-button {
   // Theme
-  &.rsbc-switch-button-flat-round input[type="checkbox"] + label
-  {
-    padding          : 2px;
-    width            : 48px;
-    height           : 24px;
+  .label {
+    color: @color-grey;
+  }
+
+  &.hive-b2b input[type="checkbox"] + label {
     vertical-align   : middle;
-    background-color : @rsbc-theme-flat-color-off;
-    .rsbc-border-radius(60px);
-    .rsbc-transition(background 0.4s);
+    background-color : @color-off;
+    .transition(background @transition);
   }
 
-  &.rsbc-switch-button-flat-round.disabled input[type="checkbox"] + label
-  {
-    background-color : @rsbc-theme-flat-color-disabled;
+  &.hive-b2b.disabled input[type="checkbox"] + label {
+    background-color : @color-disabled;
   }
 
-  &.rsbc-switch-button-flat-round:hover input[type="checkbox"] + label
-  {
-    background-color : @rsbc-theme-flat-color-on;
+  &.hive-b2b:hover input[type="checkbox"] + label {
+    background-color : @color-on;
   }
 
-  &.rsbc-switch-button-flat-round.disabled:hover input[type="checkbox"] + label
-  {
-    background-color : @rsbc-theme-flat-color-disabled;
+  &.hive-b2b.disabled:hover input[type="checkbox"] + label {
+    background-color : @color-disabled;
   }
 
-  &.rsbc-switch-button-flat-round input[type="checkbox"] + label:before,
-  &.rsbc-switch-button-flat-round input[type="checkbox"] + label:after
-  {
+  &.hive-b2b input[type="checkbox"] + label:after {
     display  : inline-block;
     position : absolute;
     content  : "";
   }
 
-  // inner background
-  &.rsbc-switch-button-flat-round input[type="checkbox"] + label:before
-  {
-    top              : 2px;
-    left             : 2px;
-    bottom           : 2px;
-    right            : 2px;
-    background-color : #fff;
-    .rsbc-border-radius(60px);
-    .rsbc-transition(background 0.4s);
+  &.hive-b2b input[type="checkbox"] + label:after {
+    background-color : @color-pin;
+    .transition(margin @transition, background @transition;);
   }
 
-  &.rsbc-switch-button-flat-round input[type="checkbox"] + label:after
-  {
-    top              : 4px;
-    left             : 4px;
-    bottom           : 4px;
-    width            : 16px;
-    background-color : @rsbc-theme-flat-color-off-border;
-    .rsbc-border-radius(52px);
-    .rsbc-transition(margin 0.4s, background 0.4s;);
+  &.hive-b2b.disabled input[type="checkbox"] + label:after {
+    background-color : @color-disabled-border;
   }
 
-  &.rsbc-switch-button-flat-round.disabled input[type="checkbox"] + label:after
-  {
-    background-color : @rsbc-theme-flat-color-disabled-border;
+  &.hive-b2b:hover input[type="checkbox"]:checked + label {
+    background-color : @color-off;
   }
 
-  &.rsbc-switch-button-flat-round:hover input[type="checkbox"]:checked + label
-  {
-    background-color : @rsbc-theme-flat-color-off;
+  &.hive-b2b input[type="checkbox"]:checked + label {
+    background-color : @color-on;
   }
 
-  &.rsbc-switch-button-flat-round input[type="checkbox"]:checked + label
-  {
-    background-color : @rsbc-theme-flat-color-on;
+  &.hive-b2b.disabled input[type="checkbox"]:checked + label {
+    background-color : @color-disabled;
   }
 
-  &.rsbc-switch-button-flat-round.disabled input[type="checkbox"]:checked + label
-  {
-    background-color : @rsbc-theme-flat-color-disabled;
+  &.hive-b2b input[type="checkbox"]:checked + label:after {
+    background-color : @color-pin;
   }
 
-  &.rsbc-switch-button-flat-round input[type="checkbox"]:checked + label:after
-  {
-    margin-left      : 24px;
-    background-color : @rsbc-theme-flat-color-on-border;
+  &.hive-b2b.disabled input[type="checkbox"]:checked + label:after {
+    background-color : @color-disabled-border;
   }
 
-  &.rsbc-switch-button-flat-round.disabled input[type="checkbox"]:checked + label:after
-  {
-    margin-left      : 24px;
-    background-color : @rsbc-theme-flat-color-disabled-border;
-  }
-
-  &.rsbc-switch-button.rsbc-switch-button-flat-round {
+  &.switch-button.hive-b2b {
     &.rsbc-mode-select {
       input[type="checkbox"] + label:after,
       &:hover input[type="checkbox"]:checked + label,
       input[type="checkbox"] + label {
-        background-color : @rsbc-theme-flat-color-on !important;
+        background-color : @color-on !important;
+      }
+    }
+  }
+
+  //size sm
+  @border-sm: 1px;
+  @size-sm: 16px;
+  @radius-sm: 40px;
+
+  @size2-sm: @size-sm - (@border-sm*4);
+  @radius2-sm: @radius-sm - (@border-sm*4);
+
+  &.sm {
+
+    .label {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    input[type="checkbox"] + label {
+      padding          : @border-sm;
+      width            : @size-sm*2;
+      height           : @size-sm;
+      .border-radius(@radius-sm);
+    }
+
+    input[type="checkbox"] + label:after {
+      top              : @border-sm*2;
+      left             : @border-sm*2;
+      bottom           : @border-sm*2;
+      width            : @size2-sm;
+      .border-radius(@radius2-sm);
+    }
+
+    input[type="checkbox"]:checked + label:after {
+      margin-left: @size-sm;
+    }
+
+    &.disabled {
+      input[type="checkbox"]:checked + label:after {
+        margin-left: @size-sm;
       }
     }
   }

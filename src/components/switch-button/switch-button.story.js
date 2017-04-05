@@ -14,5 +14,8 @@ storiesOf('SwitchButton', module)
   ))
   .add('default', () => (
     <SwitchButton/>
+  ))
+  .add('with labelRight sm', () => (
+    <SwitchButton labelRight="Активен" />
   ));
 
