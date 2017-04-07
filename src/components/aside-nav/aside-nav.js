@@ -36,6 +36,10 @@ export default class AsideNav extends Component {
       }
     };
 
+    /**<IndexLink onClick={toggleMenu} className={style.link} to='/' activeClassName={style.activeLink}>
+     Home
+     </IndexLink>**/
+    
     return (
       <div className={cx(style.wrapper, isOpen ? style.open : '')}>
         <div className={style.hamburger} onClick={toggleMenu}>
@@ -45,9 +49,7 @@ export default class AsideNav extends Component {
         </div>
         <div className={style.logo}></div>
         <nav className={style.nav}>
-          <IndexLink onClick={toggleMenu} className={style.link} to='/' activeClassName={style.activeLink}>
-            Home
-          </IndexLink>
+
           {items.map(({pathname, title}, key) =>
             <Link
               onClick={toggleMenu}

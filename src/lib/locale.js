@@ -25,10 +25,8 @@ export const initTranslationsObject = () => {
   });
 
   return Promise.all(promisses).then((values) => {
-    debugger;
     return values;
   }, reason => {
-    debugger;
     console.log('initTranslationsObject ERROR')
   });
 

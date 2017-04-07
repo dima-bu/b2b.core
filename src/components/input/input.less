@@ -13,21 +13,21 @@
 
 .default {
   box-sizing: border-box;
-  padding: 15px 17px;
+
   width: 100%;
-  outline: none;
+  outline: 0 none;
   color: @color-grey-dark;
   border: 1px solid @color-grey;
   border-radius: 2px;
-  font-size: 24px;
-  font-weight: 900;
+
   font-family: @font-base;
-  line-height: 24px;
+
   -webkit-appearance: none;
 
   &:focus {
     border-color: @color-blue-pastel;
-    box-shadow: inset 0px 1px 3px 0px @color-blue;
+    //box-shadow: inset 0px 1px 3px 0px @color-blue;
+    outline: 0 none;
   }
 
   &[disabled] {
@@ -91,4 +91,19 @@
   font-family:@font-base;
   font-weight: 700;
   line-height: 18px;
+}
+
+.lg-size {
+  padding: 15px 17px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 24px;
+}
+
+
+.sm-size {
+  padding: 8px 7px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
 }

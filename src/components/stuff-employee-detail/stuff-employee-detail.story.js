@@ -7,7 +7,8 @@ const item = {
     "lastName": "Бухал",
     "firstName": " Д.",
     "middleName": " Д.",
-    "locked": false
+    "locked": false,
+    "phones": ['+7923225865']
 };
 
 const title = 'Сведения';
@@ -18,7 +19,7 @@ const styles = {
   'height': '80vh'
 };
 
-const {employeeId, lastName, firstName, middleName, locked}  = item;
+const {employeeId, lastName, firstName, middleName, locked, phones}  = item;
 
 storiesOf('StuffEmployeeDetail', module)
   .addDecorator(getStory => (
@@ -28,5 +29,14 @@ storiesOf('StuffEmployeeDetail', module)
     <StuffEmployeeDetail title={title} />
   ))
   .add('with data', () => (
-    <StuffEmployeeDetail title={title} employeeId={employeeId} lastName={lastName} firstName={firstName} middleName={middleName} locked/>
+    <StuffEmployeeDetail
+      title={title}
+      employeeId={employeeId}
+      lastName={lastName}
+      firstName={firstName}
+      middleName={middleName}
+      phones={phones}
+      locked
+      />
   ));
+

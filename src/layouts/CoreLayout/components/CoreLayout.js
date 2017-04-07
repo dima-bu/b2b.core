@@ -5,14 +5,6 @@ import {connect} from 'react-redux';
 
 const items = [
   {
-    pathname: '/login',
-    title: 'Login'
-  },
-  {
-    pathname: '/counter',
-    title: 'Counter'
-  },
-  {
     pathname: '/stuff',
     title: 'Сотрудники'
   }

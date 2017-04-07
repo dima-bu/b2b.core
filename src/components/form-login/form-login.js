@@ -37,7 +37,7 @@ export default class FormLogin extends Component {
             <Field name='password' type='password' component={Input} />
           </div>
           <div className={style.actions}>
-            <Button theme='primary' type='submit' size='lg' caption='Войти' />
+            <Button full theme='primary' type='submit' size='lg' caption='Войти' />
           </div>
         </form>
       </div>

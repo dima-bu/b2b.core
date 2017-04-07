@@ -10,9 +10,13 @@
   border-radius: 2px;
   outline: 0 none;
   border: 0 none;
+
+  &.full {
+    width: 100%;
+  }
 }
 
-//theme
+//themes
 .primary {
   color: #fff;
   background: @gradient-blue;
@@ -21,6 +25,13 @@
   }
 }
 
+.danger {
+  color: #fff;
+  background: @color-red-dark;
+  &:hover {
+    background: fade(@color-red-dark, 90%);
+  }
+}
 
 //sizes
 .lg {
@@ -31,8 +42,24 @@
   padding-bottom: 18px;
   padding-left: 30px;
   padding-right: 30px;
+}
 
-  &.full {
-    width: 100%;
-  }
+.sm {
+  height: 30px;
+  font-size: 14px;
+  line-height: 16px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.md {
+  height: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

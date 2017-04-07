@@ -18,6 +18,7 @@ export default class Input extends Component {
       error: PropTypes.string,
       touched: PropTypes.bool
     }),
+    size:  PropTypes.oneOf(['sm', 'md', 'lg']),
     theme: PropTypes.oneOf(['default', 'simple', 'hero']),
     'data-name': PropTypes.string
   }
@@ -26,6 +27,7 @@ export default class Input extends Component {
     placeholder: '',
     disabled: false,
     type: 'text',
+    size: 'lg',
     meta: {
       touched: false,
       error: ''
@@ -35,7 +37,7 @@ export default class Input extends Component {
   }
 
   render () {
-    const {placeholder, disabled, type, input, meta, theme} = this.props;
+    const {placeholder, disabled, type, input, meta, theme, size} = this.props;
     const dataName = this.props['data-name'];
     const isError = meta.touched && meta.error;
 
@@ -53,7 +55,7 @@ export default class Input extends Component {
           {...input}
           {...{placeholder, disabled, type}}
           data-name={dataName}
-          className={cx(styles.input, styles[theme])}
+          className={cx(styles.input, styles[theme], styles[size+'-size'])}
           />
       </div>
     );

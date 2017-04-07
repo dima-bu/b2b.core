@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import fl from 'styles/fluidable.less';
 import StuffGroupsList from 'components/stuff-groups-list/stuff-groups-list.js';
 import StuffEmployeesList from 'components/stuff-employees-list/stuff-employees-list.js';
-import StuffEmployeeDetail from 'components/stuff-employee-detail/stuff-employee-detail';
+import StuffEmployeeDetail from 'components/stuff-employee-detail/stuff-employee-detail.js';
 import style from './Stuff.less';
 import {tr} from 'lib/locale.js';
 
@@ -14,8 +14,23 @@ export default class Stuff extends Component {
 
   render() {
 
-    const {selectGroup, selectEmployee, groups, activeGroupId, employees, activeEmployeeId} = this.props;
-    const {lastName, firstName, middleName, employeeId, phones, locked} = this.props.employee;
+    const {
+      selectGroup,
+      selectEmployee,
+      lockEmployee,
+      unlockEmployee,
+      turnOnEditing,
+      turnOffEditing,
+      editEmployee,
+      //
+      groups,
+      activeGroupId,
+      employees,
+      activeEmployeeId,
+      locked,
+      isEditing
+    } = this.props;
+    const {lastName, firstName, middleName, employeeId, phones} = this.props.employee;
     const onSelectGroup = (id) => {
       selectGroup(id)
     };
@@ -53,8 +68,14 @@ export default class Stuff extends Component {
                 lastName={lastName}
                 middleName={middleName}
                 employeeId={employeeId}
+                isEditing={isEditing}
                 phones={phones}
                 locked={locked}
+                onLockEmployee={lockEmployee}
+                onUnLockEmployee={unlockEmployee}
+                onTurnOnEditing={turnOnEditing}
+                onTurnOffEditing={turnOffEditing}
+                onEditEmployee={editEmployee}
               />
             </div>
           </div>

@@ -22,7 +22,7 @@ export default class Button extends Component {
   }
 
   static defaultProps = {
-    full: true,
+    full: false,
     type: 'button',
     onClick: () => {},
     caption: '',

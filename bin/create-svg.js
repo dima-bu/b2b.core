@@ -37,4 +37,4 @@ const createSvg = (name) => {
 
 const name = process.argv[2];
 createSvg(name);
-//npm run ce foo
+//npm run svg foo

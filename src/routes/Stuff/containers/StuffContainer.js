@@ -1,11 +1,16 @@
 import {connect} from 'react-redux';
-import {loadGroups, selectGroup, selectEmployee} from '../modules/stuff';
+import {loadGroups, selectGroup, selectEmployee, lockEmployee, unlockEmployee, editEmployee, turnOnEditing, turnOffEditing} from '../modules/stuff';
 import Stuff from '../components/Stuff';
 
 const mapDispatchToProps = {
   loadGroups: loadGroups,
   selectGroup: selectGroup,
-  selectEmployee: selectEmployee
+  selectEmployee: selectEmployee,
+  lockEmployee: lockEmployee,
+  unlockEmployee: unlockEmployee,
+  turnOnEditing: turnOnEditing,
+  turnOffEditing: turnOffEditing,
+  editEmployee: editEmployee
 };
 
 const mapStateToProps = (state) => ({
@@ -15,7 +20,9 @@ const mapStateToProps = (state) => ({
   loadError: state.stuff.loadError,
   activeGroupId: state.stuff.activeGroupId,
   activeEmployeeId: state.stuff.activeEmployeeId,
-  employee: state.stuff.employee
+  locked: state.stuff.employee.locked,
+  employee: state.stuff.employee,
+  isEditing: state.stuff.isEditing
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stuff);

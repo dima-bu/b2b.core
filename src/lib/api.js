@@ -77,6 +77,37 @@ export default class API {
     return this.API.getEmployee({groupId: groupId, employeeId: employeeId, contractor: this.contractorId}).promise();
   }
 
+  static LockEmployee (employeeId, groupId) {
+    return this.API.lockEmployee({groupId: groupId, employeeId: employeeId, contractor: this.contractorId}).promise();
+  }
+
+  static UnlockEmployee (employeeId, groupId) {
+    return this.API.unlockEmployee({groupId: groupId, employeeId: employeeId, contractor: this.contractorId}).promise();
+  }
+
+  static EditEmployee (employee, employeeId, groupId) {
+
+    const params = {
+      groupId: groupId,
+      contractor: this.contractorId,
+      employeeId: employeeId
+    };
+
+    if (employee.firstName) {
+      params.firstName = employee.firstName
+    }
+
+    if (employee.middleName) {
+      params.middleName = employee.middleName
+    }
+
+    if (employee.lastName) {
+      params.lastName = employee.lastName
+    }
+
+    return this.API.editEmployee(params).promise();
+  }
+
   // static getNonce () {
   //   return Math.round(Math.random() * 10000000);
   // }
